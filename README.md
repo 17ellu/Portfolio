@@ -1,4 +1,4 @@
 # Portfolio
 
-Hej! Det här är min portfgolio, se wikin för mer
+Hej! Det här är min portfolio, se wikin för mer
 //Ellen
