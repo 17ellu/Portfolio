@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+
+ <style type="text/css">
+
+
+
+ .tärning1{
+      width:70px;
+      height: 70px;
+      border:#999 1px solid;
+      font-size:24px;
+      text-align:center;
+      margin:5px;
+      border-radius: 5px;
+      font-family: Lucida Console;
+
+   }
+.tärning2{
+   width: 70px;
+   height: 70px;
+   border:#999 1px solid;
+   font-size:24px;
+   text-align:center;
+   margin:5px;
+   border-radius: 5px;
+   font-family: Lucida Console;
+
+}
+
+   </style>
+</head>
+
+<body>
+
+<center>
+
+<h2 style="font-family: Lucida Console; width: 100%; font-size: 70px; margin: 0px;"> Tärningsspel</h2>
+
+<div style="width: 47%; height: 200px; background-color: #f441a6; border-radius: 15px; margin: 5px;">
+
+  <h1 style="clear: left; font-family: Lucida Console;">spelare 1:</h1>
+
+  <br>
+
+<img id="thing1" class="tärning1"></img>
+
+<img id="thing2" class="tärning1"></img>
+
+
+<h2 id="status1" style="clear: left; font-family: Lucida Console;"></h2>
+
+</div>
+
+
+<div style="width: 47%; height: 200px; background-color: #4286f4; border-radius: 15px; margin: 5px;">
+
+  <h1 style="clear: left; font-family: Lucida Console;">spelare 2:</h1>
+
+  <br>
+
+<img id="thing3" class="tärning2"></img>
+
+<img id="thing4" class="tärning2"></img>
+
+<h2 id="status2" style="clear: left; font-family: Lucida Console;"></h2>
+
+</div>
+
+<button onmousedown="kastaTärning()" style="font-size: 50px; border-radius: 15px; font-family: Lucida Console; margin: 5px;"> Kasta tärningar </button>
+
+<div style="width: 100%; font-family: Lucida Console; font-size: 70px; text-align: center;" id="vinnare"></div>
+
+<script type="text/javascript">
+
+var total1,total2;
+
+function kastaTärning(){
+  //SPELARE 1
+    var thing1 = document.getElementById('thing1');
+    var thing2 = document.getElementById('thing2');
+    var status1 = document.getElementById('status1');
+  //SPELARE 2
+    var thing3 = document.getElementById('thing3');
+    var thing4 = document.getElementById('thing4');
+    var status2 = document.getElementById('status2');
+  //SPELARE 1
+    var t1 = Math.floor(Math.random()*6)+1;
+    var t2 = Math.floor(Math.random()*6)+1;
+    total1 = t1+t2;
+  //SPELARE 2
+    var t3 = Math.floor(Math.random()*6)+1;
+    var t4 = Math.floor(Math.random()*6)+1;
+    total2 = t3+t4;
+  //SPELARE 1
+    thing1.src = "img/tärning"+t1+".jpg";
+    thing2.src = "img/tärning"+t2+".jpg";
+    status1.innerHTML = "Du fick "+ total1 +".";
+  //SPELARE 2
+    thing3.src = "img/tärning"+t3+".jpg";
+    thing4.src = "img/tärning"+t4+".jpg";
+    status2.innerHTML = "Du fick "+ total2 +".";
+
+    resultat();
+}
+
+function resultat() {
+
+
+if(total1>total2){
+  document.getElementById('vinnare').innerHTML = "Spelare 1 vinner!";
+}
+
+else if(total2>total1){
+  document.getElementById('vinnare').innerHTML = "Spelare 2 vinner!";
+}
+
+else {
+  document.getElementById('vinnare').innerHTML = "Oavgjort";
+}
+}
+
+
+function kastatärning(id1)
+{
+  var tärning = document.getElementById(id1);
+  var värde = Math.floor(Math.random()*6)+1;
+  tärning.src = "img/tärning"+värde+".jpg";
+  return värde;
+}
+
+
+function addAndShow(värde1, värde2)
+{
+    var total = värde1 + värde2;
+    // SEND TO THE HTML PLS
+    return total;
+}
+
+var player1 = addAndShow(kastatärning("thing3"), kastatärning("thing4"));
+var player2 = addAndShow(kastatärning("thing1"), kastatärning("thing2"));
+console.log("player2 => " + player2,"player1 => " +  player1);
+if(player1 == player2)
+{
+  //DO stuf
+  console.log("oavgjort");
+  //end loop
+}
+else {
+  if(player1 > player2)
+  {
+    console.log("player1 won");
+  }
+  else {
+    console.log("player2 won");
+  }
+
+}
+kastatärning("thing4");
+
+
+</script>
+</body>
+</html>
